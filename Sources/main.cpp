@@ -8,34 +8,35 @@ int main()
 	//	---	MENU OPTIONS	---	//
 	//Main menu options
 	mainMenu.addChoice("Games List");
-	mainMenu.addChoice("Exit");
+	mainMenu.addExit();
 	//Actions options
 	actionsMenu.addChoice("Play");
 	actionsMenu.addChoice("Edit Players");
 	actionsMenu.addChoice("Edit Game");
-	actionsMenu.addChoice("Exit");
+	actionsMenu.addExit();
+	//Games Menu
+	/*for(game:games)
+		gamesMenu.addChoice(game.name)*/
+	gamesMenu.addExit();
 	//Player editor
 	/*for(player:players)
 		playerEditor.addChoice(player.name);*/
 	playerEditor.addChoice("New Player");
-	playerEditor.addChoice("Exit");
+	actionsMenu.addExit();
 
-	//Chosen game index
-	unsigned short int gIndex;
-	//#TODO: DO{}WHILE; POUR LES RETOURS DE MENUS
-	switch(mainMenu.display())
+	do
 	{
-	case 0:
-		//Selecting a game
-		/*for(game:games)
-			gamesMenu.addChoice(game.name)*/
-		gIndex = gamesMenu.display();
+		switch(mainMenu.display())
+		{
+		case 0:
+			//Games List
+			do
+			{
+				gamesMenu.display();
 
-
-		break;
-
-	case 1:
-		break;
-	}
+			}while(!gamesMenu.leaving());
+			break;
+		}
+	}while(!mainMenu.leaving());
 	return 0;
 }
